@@ -1,5 +1,5 @@
 import { Container, Header, Linha,SegundaLinha, PerguntaInput, Resposta, SubmitButton, PerguntaFeita } from "./Main.styles";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import sendRequest from "../../services/api";
 import {FiSend} from "react-icons/fi"
 
@@ -13,6 +13,10 @@ export function Main(){
 
     const [input, setInput] = useState('');
     const [escrevendo, setEscrevendo] = useState(false);
+
+    const inputRef = useRef<HTMLInputElement>(null);
+    const divRef = useRef<HTMLDivElement>(null);
+
 
     const [respostas, setRespostas] = useState<string[][]>([]);
 
@@ -30,6 +34,12 @@ export function Main(){
           SendQuestion();
         }
       };
+
+      useEffect(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }, []);
 
     return(
         <Container>
@@ -53,15 +63,14 @@ export function Main(){
                             </div>
                     )
                 })}
-                
                 </Linha>
                     <SegundaLinha>
                         <PerguntaInput
+                        ref={inputRef}
                         value={input}
                         onChange={(e)=> setInput(e.target.value)}
                         onKeyDown={handleKeyDown}
                         placeholder="Mensagem"
-                        disabled={escrevendo}
                         />
                         <SubmitButton onClick={SendQuestion}><FiSend/></SubmitButton>
                     </SegundaLinha>

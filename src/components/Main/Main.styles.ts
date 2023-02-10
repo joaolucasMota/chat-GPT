@@ -62,13 +62,13 @@ export const Linha = styled.div`
    scrollbar-color: #333 transparent;
 
    &::-webkit-scrollbar {
-  width: 0.2em;
-  background-color: transparent;
+    width: 0.2em;
+    background-color: transparent;
    }
    
    @media (max-width: 720px) {
         width: 400px;
-        height: 550px;
+        height: 560px;
     }
 `;
 
