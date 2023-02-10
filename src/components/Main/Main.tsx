@@ -14,7 +14,7 @@ export function Main(){
     const [input, setInput] = useState('');
     const [escrevendo, setEscrevendo] = useState(false);
 
-    const [respostas, setRespostas] = useState<Array<{ input: string, resultado: string }>>([]);
+    const [respostas, setRespostas] = useState<string[][]>([]);
 
     const SendQuestion = async () =>{
         setEscrevendo(true)
@@ -30,8 +30,6 @@ export function Main(){
           SendQuestion();
         }
       };
-
-
 
     return(
         <Container>

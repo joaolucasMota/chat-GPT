@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_URL = 'https://api.openai.com/v1/completions';
 
-const autoriza = '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'
+const autoriza = 'API_KEY'
 
 const sendRequest = async (input : string) => {
   try {
